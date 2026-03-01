@@ -1,6 +1,14 @@
 # SPDX-License-Identifier: GPL-2.0-only
 menu "Platform selection"
 
+config ARCH_QUANTUM_QEMU
+	bool "Quantum QEMU Platform"
+	select ARM_GIC
+	select ARM_PSCI
+	help
+	  This enables support for the Quantum QEMU virtual platform,
+	  a QEMU-based ARM64 virt machine with Cortex-A76 CPU.
+
 config ARCH_ACTIONS
 	bool "Actions Semi Platforms"
 	select OWL_TIMER
