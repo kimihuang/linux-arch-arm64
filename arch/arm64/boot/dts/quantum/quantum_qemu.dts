@@ -21,6 +21,19 @@
 		device_type = "memory";
 	};
 
+	/* 预留 256MB 内存区域用于 memdisk (0x78000000 - 0x88000000) */
+	reserved-memory {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+
+		memdisk_reserved: memdisk@78000000 {
+			compatible = "shared-dma-pool";
+			reg = <0x00 0x78000000 0x00 0x10000000>; /* 256MB @ 0x78000000 */
+			no-map;
+		};
+	};
+
 	platform-bus@c000000 {
 		interrupt-parent = <0x8005>;
 		ranges = <0x00 0x00 0xc000000 0x2000000>;
